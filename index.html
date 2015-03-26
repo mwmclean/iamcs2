@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tools for Reproducible Research and Dynamic Documents with R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Tools for Reproducible Research and Dynamic Documents with R">
+  <meta name="author" content="Mathew W. McLean">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/custom.css"></link>
+<link rel=stylesheet href="./assets/css/oldcustom.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Tools for Reproducible Research and Dynamic Documents with R</h1>
+    <h2>IAMCS Machine Learning and Applied Statistics Workshop Series</h2>
+    <h2>February 25, 2014</h2>
+    <div>
+    <p>Mathew W. McLean<br/>Research Assistant Professor<br/>Texas A &amp; M University<br/>http://stat.tamu.edu/~mmclean</p>
+  <aside class = "titleImg" id = "UniLogo">
+    <img src="assets/img/Tamulogo.png">
+  </aside>
+    </div>
+    </hgroup>
+    <a id="fsshortcut" href="javascript:void(0)" class="tshortcut" target="_self">
+     Full screen
+    </a>
+    <a id="printshortcut" href="javascript:void(0)" class="tshortcut" target="_self">
+     Print
+    </a>
+    <a id="dlshortcut" href="assets/Downloads/slides.zip" class="tshortcut" target="_self">
+     Source
+    </a>
+
+  <article><button class="navButton" id = "titleButton" onclick="window.slidedeck.nextSlide()">&#8594;</button></article>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="body-slide" id="slide-1" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Why Should You Care?</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <h3><strong>Your research should be reproducible!</strong></h3>
+
+<ul>
+<li>An <a href="http://www.amstat.org/sections/sbss/webinarfiles/berger-webinar10-2-2012.pdf">alarming number</a> of results published in top academic journals <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1182327/">cannot be reproduced</a></li>
+<li>Ideally, output of research is not just a paper, but all code and data needed to reproduce it</li>
+<li><em>Literate Programming</em>:
+
+<ul>
+<li>A program should have plain language explanations interpersed with source code</li>
+<li>Tools such as <code>Sweave</code> and <code>knitr</code>, make this simple to do</li>
+<li>Results are automatically included when document is created (no exporting needed)</li>
+<li>Changes are automatically incorporated if methods change</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="body-slide" id="slide-2" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Why Should You Care?</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <h3><strong>It makes your life easier!</strong></h3>
+
+<ul>
+<li>Already know <code>LaTeX</code>?
+
+<ul>
+<li>The basics of <code>knitr</code> can be learned quite quickly
+
+<ul>
+<li>Just write <code>LaTeX</code> as usual with benefit of being able to add chunks of <code>R</code> code</li>
+<li>No wasted time saving <code>R</code> results and manually inputting them into a <code>TeX</code> file</li>
+</ul></li>
+</ul></li>
+<li>Do you really need all the bells and whistles of <code>LaTeX</code>?
+
+<ul>
+<li>If you&#39;re fine with your document just being viewed on the web, then you don&#39;t</li>
+<li>If you don&#39;t need to submit for publication to a journal, then you probably don&#39;t</li>
+<li>If you don&#39;t, you can use <code>Markdown</code>!
+
+<ul>
+<li>Has an extremely simple syntax which can be learned in minutes</li>
+<li>Can be converted to <code>HTML</code> or <code>PDF</code> formats nearly instantaneously</li>
+</ul></li>
+</ul></li>
+<li>For teaching, the interactivity we can gain by using <code>HTML</code> has considerable potential</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="body-slide" id="slide-3" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Why Should You Care?</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <h3><strong>It makes your life easier!</strong></h3>
+
+<ul>
+<li><a href="http://www.rstudio.com/"><code>RStudio</code></a> development environment for <code>R</code></li>
+<li>Several features that make it easier to code in <code>R</code> including:
+
+<ul>
+<li>Easy intergration with <code>Markdown</code> and <code>LaTeX</code> for <a href="http://www.rstudio.com/ide/docs/presentations/overview">presentations</a> and <a href="https://www.rstudio.com/ide/docs/authoring/markdown_notebooks">reports</a></li>
+<li>Tools for organizing different <a href="http://www.rstudio.com/ide/docs/using/projects">projects</a></li>
+<li>Tools for <a href="http://www.rstudio.com/ide/docs/packages/overview">creating</a> and <a href="http://www.rstudio.com/ide/docs/packages/building">building</a> packages: integration with <code>devtools</code> and <code>roxygen2</code></li>
+<li><a href="http://www.rstudio.com/ide/docs/debugging/overview">Debugging tools</a></li>
+<li><a href="https://www.rstudio.com/ide/docs/version_control/overview">Support</a> for version control systems</li>
+<li>Lots of <a href="https://www.rstudio.com/ide/docs/using/customizing">options</a> for customizing appearance and other settings</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="body-slide" id="slide-4" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Why Should You Care?</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <h3><strong>It makes your life easier!</strong></h3>
+
+<ul>
+<li>Using <code>GitHub</code> or another version control service for collaborations
+
+<ul>
+<li>No back and forth emailing of code (each developer gets their own copy)</li>
+<li>Easy to go back to an old version of code if something breaks</li>
+<li>Compare multiple versions of code at once</li>
+<li>Add visibility to your work, makes it easier for others to access and share it</li>
+<li>If you want, other users (total strangers!) can edit your code and suggest changes</li>
+<li>Putting code on it is easier than submitting to CRAN (code doesn&#39;t even have to work!)</li>
+<li>Keep track of progress and how much work is being done by whom</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Markup Languages</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>A system for annotating a document to separate metadata from text</li>
+<li>E.g. <code>TeX</code>, <code>LaTeX</code>, <code>HTML</code> (HyperText Markup Language)</li>
+<li>Sometimes the markup is hidden from the author, e.g. <code>Microsoft Word</code> (WYSIWYG)</li>
+<li>Procedural markup: provides instructions for other programs to process, e.g. <code>TeX</code></li>
+<li>Descriptive/semantic markup: the markup provides descriptive labels, e.g. <code>HTML</code></li>
+<li><em>Lightweight markup language</em> - markup language with simple syntax
+
+<ul>
+<li>Easy to write and easy to read</li>
+<li><code>Markdown</code> is a widely used example</li>
+<li>Can be quickly converted to other markup languages such as <code>HTML</code></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2><a href="http://www.rstudio.com/ide/docs/authoring/using_markdown"><code>R Markdown</code></a></h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Provides a simple syntax for creating reproducible documents</li>
+<li><code>R</code> code is executed and embedded, then report is converted to <code>Markdown</code> and <code>HTML</code>
+
+<ul>
+<li>Objects created in one chunk of code are available to later chunks</li>
+</ul></li>
+<li>In it&#39;s simplest/easiest use, any <code>R</code> script may be converted to <code>HTML</code> or <code>PDF</code></li>
+<li><a href="https://www.rstudio.com/ide/docs/authoring/markdown_notebooks"><code>RStudio Notebooks</code></a>
+
+<ul>
+<li>Runs <code>R</code> code in script, outputs results immediately after each line of code</li>
+<li>Open any <code>R</code> script in <code>RStudio</code> and press <code>Ctrl+Shift+Alt+H</code></li>
+</ul></li>
+<li>The <a href="http://yihui.name/knitr/demo/stitch/"><code>stitch</code> and <code>spin</code></a> functions in <code>knitr</code> provide additional formatting possibilties</li>
+<li>A quick reference document is available in <code>RStudio</code> and <a href="assets/html/MarkdownQuickReference.html">here</a></li>
+<li>Template is provided when <code>.Rmd</code> file started</li>
+<li>Mathematical notation is supported via <code>MathJax</code>; uses same markup to denote math as <code>TeX</code></li>
+<li>Appearance can be customized using <code>CSS</code></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="img-slide" id="slide-7" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Getting Started in <code>RStudio</code></h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/RStudioRmd2.svg" alt="rstudiopic"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="no-highlight" id="slide-8" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Example</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <pre><code class="r">Header 1
+======
+### Header 2
+Here is some inline R code: `r 1+1`
+**This is bold** and *this is emphasized* and `this is monospace` and
+[this is a link](http://example.com)
+* Here
+* is
+  23. a
+  54. nested
+  1. list
+</code></pre>
+
+<p>And now a code block</p>
+
+<p>```{r}
+rnorm(3)
+```</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="smallerSpacing" id="slide-9" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Output</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <h2>Header 1</h2>
+
+<h1>Header 2</h1>
+
+<p>Here is some inline R code: 2
+<strong>This is bold</strong> and <em>this is emphasized</em> and <code>this is monospace</code>
+and <a href="http://example.com">this is a link</a></p>
+
+<ul>
+<li>Here</li>
+<li>is
+
+<ol>
+<li>a</li>
+<li>nested</li>
+<li>list</li>
+</ol></li>
+</ul>
+
+<p>And now a code block</p>
+
+<pre><code class="r">rnorm(3)
+</code></pre>
+
+<pre><code>## [1] -1.7282  0.8667 -1.2091
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>From <code>Markdown</code> to <code>LaTeX</code></h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>Sweave</code> and <code>knitr</code> use a special <code>TeX</code> file with extension <code>.Rnw</code></li>
+<li>A <code>LaTeX</code> document that includes <code>R</code> code</li>
+<li>Code chunks are started with <code>&lt;&lt; &gt;&gt;=</code> and ended with <code>@</code></li>
+<li>Inline code is written <code>\Sexpr{ }</code></li>
+<li>Helpful <a href="http://cran.r-project.org/web/packages/knitr/vignettes/knitr-refcard.pdf">quick reference</a></li>
+</ul>
+
+<pre><code class="r">&lt;&lt;chunkname, options&gt;&gt;=
+  library(ggplot2)
+  qplot(mpg, wt, data=mtcars)
+@
+Here is some inline code \Sexpr{1+1}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Useful Chunk Options in <code>knitr</code></h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li><a href="http://yihui.name/knitr/demo/cache/"><em>cache</em></a> - set to <code>TRUE</code> to store long calculations
+
+<ul>
+<li>even the slightest change to the chunk will cause it to be recalculated</li>
+<li>use <code>dependson=&#39;chunkname&#39;</code> to specify which chunks the current chunk depends on</li>
+</ul></li>
+<li><em>echo</em> - <code>FALSE</code> to not output the code, <em>or</em> a numeric vector of which lines of code to hide</li>
+<li><em>eval</em> - <code>FALSE</code> to not evaluate the chunk, or numeric vector on lines to not evaluate
+8 <em>include</em> - <code>FALSE</code> to evaluate a chunk but not include the output</li>
+<li><em>tidy</em> - <code>FALSE</code> to turn off formatting of code (useful if text isn&#39;t wrapping properly)</li>
+<li><em>highlight</em> - <code>FALSE</code> to not colour code and output</li>
+<li>Lots of options for controlling plot output; see <a href="http://yihui.name/knitr/options">here</a></li>
+<li>For more customization you may need to set <a href="http://yihui.name/knitr/hooks">hooks</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Example: Automatic Generation of a Quiz</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Goal is to automatically generate a quiz from a test bank of questions</li>
+<li>Below are three questions written in syntax for <code>.Rnw</code> files and stored  in an <code>R</code> vector
+
+<ul>
+<li><code>\Sexpr{...}</code> for inline <code>R</code> code <code>&lt;&lt;&gt;&gt;= ... @</code> for chunks</li>
+</ul></li>
+</ul>
+
+<pre><code class="r">TestBank &lt;- c(&quot;Construct a \\emph{\\Sexpr{c(&#39;box plot&#39;, &#39;stem-and-left plot&#39;,
+  &#39;Normal Q-Q plot&#39;)[sample(3, 1)]}} for the following sample of data
+  (\\Sexpr{paste0(round(rnorm(10, mean = 60), 1), collapse = &#39;, &#39;)}).&quot;,
+&quot;Construct a \\Sexpr{sample(c(90, 95, 99), 1)}\\% confidence interval for
+the ratio of the variances of the following two samples
+(\\Sexpr{paste0(rpois(10, 10), collapse = &#39;, &#39;)}) and
+(\\Sexpr{paste0(rpois(6, 6), collapse = &#39;, &#39;)}).&quot;,
+&quot;What is the probability that an expontential random variable with $\\lambda = 1$
+exceeds 1.5 given that it exceeds 1.&quot;)
+</code></pre>
+
+<ul>
+<li>We can randomly choose questions from the test bank</li>
+<li>Here notice the first two questions will have new data each time they are generated</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="smallerSpacing" id="slide-13" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Example: Automatic Generation of a Quiz</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>We can then write a <code>brew</code> document to generate the questions and output an <code>.Rnw</code> file</li>
+<li>Assuming we saved the <code>TestBank</code> vector in <code>TestBank.R</code>...</li>
+<li>Chunks of <code>R</code> code are delimited using <code>&lt;%...&gt;%</code> or <code>&lt;%= ... &gt;%</code> (latter outputs the results)</li>
+</ul>
+
+<pre><code class="r">\documentclass[12pt]{article}
+\title{An Example Quiz using \texttt{brew} and \texttt{knitr} \\ \large IAMCS Seminar}
+\author{Mathew McLean}
+\usepackage{amsmath,graphicx}
+\begin{document}
+\maketitle
+&lt;%  source(&quot;TestBank.R&quot;)
+test.length &lt;- 2
+questions &lt;- TestBank[sample(length(TestBank), test.length)] %&gt;
+&lt;%= for (i in seq_along(questions)){
+  cat(paste0(&quot;\\textbf{Question &quot;, i, &quot;}\n&quot;))
+  cat(paste(questions[i], &quot;\\vskip 5cm\n&quot;, sep = &quot;\n&quot;))
+}  %&gt;
+\end{document}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Example: Automatic Generation of a Quiz</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <p>Assuming we have saved the document on the previous slide as &quot;quiz.brew&quot;...</p>
+
+<pre><code class="r">library(brew)
+library(knitr)
+brew(&quot;quiz.brew&quot;, &quot;quiz.Rnw&quot;)
+knit2pdf(&quot;quiz.Rnw&quot;, &quot;quiz.pdf&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Example: Automatic Generation of a Quiz</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <iframe src="assets/quizEx/quiz.pdf" type='application/pdf'></iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Example: Automatic Generation of a Quiz</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <iframe src="assets/quizEx/quiz2.pdf" type='application/pdf'></iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Creating <code>HTML5</code> Presentations In <code>R</code></h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li><a href="http://slidify.org/"><code>Slidify</code></a> and <code>Rstudio</code> <a href="http://www.rstudio.com/ide/docs/presentations/overview"><code>R Presentations</code></a> convert <code>Rmd</code> files into <code>HTML5</code> slides
+
+<ul>
+<li>Rstudio&#39;s version is easier to use</li>
+<li>Slidify allows for more customization, can use several different frameworks</li>
+</ul></li>
+<li>Slightly different syntax for both
+
+<ul>
+<li>For <code>Slidify</code>, slides are separated using &quot;---&quot;</li>
+<li>For <code>Rstudio R Presentations</code>, new slide begins with header using &quot;=====&quot;</li>
+</ul></li>
+<li>Allows users to interact with your slides
+
+<ul>
+<li>All the powers of JavaScript are at your fingertips</li>
+</ul></li>
+<li>Compilation is much faster than <code>LaTeX/Beamer</code></li>
+<li>Easier to type and less commands to remember</li>
+<li>With a little CSS and HTML knowledge becomes very easy to customize and debug
+
+<ul>
+<li>Customizing <a href="https://www.rstudio.com/ide/docs/authoring/markdown_custom_rendering">RStudio output</a> and customizing <a href="http://slidify.org/customize.html">Slidify</a></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Example: Interactive Graphics from <a href="http://www.highcharts.com/">Highcharts</a></h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <p>Average daily temperature for several Canadian cities (click and hover on curves and names)</p>
+
+<p>See <a href="http://ramnathv.github.io/rCharts/">rCharts</a>, <a href="https://code.google.com/p/google-motion-charts-with-r/">googleVis</a>, and <a href="https://github.com/rstudio/ggvis">ggvis</a> packages in <code>R</code></p>
+
+<iframe src="assets/html/lineEx3.html"></iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>More Canadian Weather Data - <code>googleVis</code></h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <p>Average daily temperature (&#8451;) and total yearly rainfall (mm.)</p>
+
+<table style="width: 100%; background-color: white;  table-layout: fixed;">
+<tr>
+<td style="width: 75%; height: 145px; background-color: white">
+
+```
+## Warning: there is no package called 'googleVis'
+```
+
+```
+## Error: could not find function "gvisGeoChart"
+```
+
+```
+## Error: error in evaluating the argument 'x' in selecting a method for function 'print': Error: object 'myGp' not found
+```
+</td>
+<td style="width: 25%; background-color: white; height: 145px;">
+<svg xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink">
+  <circle cx="5" cy="10" r="5" fill="green" />
+  <circle cx="20" cy="10" r="7" fill="green" />
+  <circle cx="40" cy="10" r="10" fill="green" />
+  <text x="60" y="15" font-size="12" font-weight="bold">    -   Yearly rainfall</text>
+  <circle cx="10" cy="40" r="7" fill="lightgrey" />
+  <circle cx="26" cy="40" r="7" fill="#8FBC8F" />
+  <circle cx="43" cy="40" r="7" fill="green" />
+  <text x="60" y="45" font-size="12" font-weight="bold">   -   Average daily temperature</text>
+</svg>
+</td>
+</tr>
+</table>
+
+<pre><code class="r">library(googleVis)
+## ... omitted formatting of cw.dat data.frame
+gvisGeoChart(cw.dat, locationvar=&quot;lat.long&quot;, colorvar=&#39;ave.temp&#39;, hovervar=&#39;place&#39;,
+                          sizevar=&#39;total.precip&#39;, options=list(region=&#39;CA&#39;, resolution=&#39;provinces&#39;))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>3D plots with <a href="http://cran.r-project.org/web/packages/rgl/index.html"><code>RGL</code></a> and <code>WebGL</code></h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <iframe src="assets/html/FGAMrgl.html" id="rgl"></iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2><code>Shiny</code></h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li><a href="http://www.rstudio.com/shiny/"><code>Shiny</code></a>, can be used to write applications for the web in <code>R</code></li>
+<li>As interacts with the app (changes inputs), <code>R</code> code is rerun to update the outputs (<em>reactivity</em>)</li>
+<li>As with the tools presented earlier, no knowledge of <code>HTML</code> or <code>Javascript</code> is needed</li>
+<li>Apps can be deployed locally using the <code>shiny</code> package or hosted on the web</li>
+<li>A great <a href="http://rstudio.github.io/shiny/tutorial/">tutorial</a> and lots of <a href="http://www.rstudio.com/shiny/showcase/">examples</a> are available on the <code>RStudio</code> website</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="smallerSpacing" id="slide-22" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Example: Functional Regression Modelling</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <p>(May need a moment to load)</p>
+
+<iframe data-src="https://fgam.shinyapps.io/fgam/" style="width: 900px; height: 600px seamless" id="shinyframe"></iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Version Control Systems (VCS)</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>For managing changes to documents and code</li>
+<li><p>In a <em>distributed VCS</em></p>
+
+<ul>
+<li>There is no central repository</li>
+<li>Each developer has their own copy of all code</li>
+<li>No need to be connected to a server, other than to share with other developers</li>
+</ul></li>
+<li><p>The two most popular systems are <code>Git</code> and <code>Subversion</code> (<code>SVN</code>)</p>
+
+<ul>
+<li><code>Git</code> is a <em>distributed</em> VCS, <code>SVN</code> is not</li>
+<li><code>R</code> project uses <a href="http://svn.r-project.org/R/branches/">SVN</a></li>
+</ul></li>
+<li><p>With Git, nearly all operations are done locally and very quickly</p>
+
+<ul>
+<li>Delta compression is used: only differences between versions are stored</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Why Use Git/GitHub (Even to Work Alone)?</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Backup of all files</li>
+<li>Track history of all changes to every file</li>
+<li>Public or private depending on preference</li>
+<li>Easy to transfer files between workstations (e.g. home/laptop and office PC)</li>
+<li>Take frequent &quot;snapshots&quot; (<a href="http://gitref.org/basic/"><em>commits</em></a>) of code, making it easier to find where issues started</li>
+<li>Have a <a href="http://git-scm.com/book/ch3-1.html"><em>branch</em></a> for working code only, one for fixing bugs, another for adding new features
+
+<ul>
+<li><em>branching</em> and <em>merging</em> is so fast/easy that it can and should be done frequently</li>
+</ul></li>
+<li>No emailing of code to anyone, they simply checkout a copy of the repository
+
+<ul>
+<li><a href="https://help.github.com/articles/how-do-i-add-a-collaborator">Can give permission to make</a> (<em>push</em>) changes to a repo, or allow only a <em>fork</em></li>
+</ul></li>
+<li>Users can easily report issues and suggest changes (a <a href="https://help.github.com/articles/using-pull-requests"><em>pull request</em></a>) on GitHub</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2><code>GitHub</code></h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>I personally began using the <code>GitHub</code> GUI before knowing any <code>Git</code>, finding it very easy to use
+
+<ul>
+<li>Learn more as projects grow in size and add collaborators</li>
+</ul></li>
+<li>Free public repositories
+
+<ul>
+<li>Private starts at $7/month for five repositories</li>
+</ul></li>
+<li><a href="http://windows.github.com">GUI for Windows</a> provides simple interface for many commands</li>
+<li>Checkout <code>R</code> packages hosted on <code>GitHub</code> using <code>devtools</code>&#39;s <code>install_github</code> function</li>
+<li>Can use <a href="http://travis-ci.com/">Travis CI</a> to automatically test your software
+
+<ul>
+<li>With each push to repo, <code>Travis CI</code> will build your project and run tests</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="smallerSpacing" id="slide-26" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>A Sampling of Git Commands and Terminology</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li><em>init</em> - initializes a new repository</li>
+<li><em>clone</em> - create a copy of a repository</li>
+<li><em>branch</em> - an isolated working copy of the project</li>
+<li><em>commit</em> - the state of the project at a particular time (used to record changes)</li>
+<li><em>HEAD</em> - symbolic name of the currently checked out commit</li>
+<li><em>status</em> - gives information about the current working branch</li>
+<li><em>log</em> - show the commit logs</li>
+<li><em>remote</em> - manage the repositories you track (the &quot;remotes&quot;)</li>
+<li><em>push</em> - push your changes to another repo (a complete copy must be pushed)</li>
+<li><em>fetch</em> - get files from another repository</li>
+<li><em>pull</em> - <em>fetch</em> from another repo and <em>merge</em> it with your branch
+<br/>
+The GUI can take care of the common tasks, but you will need to use a shell for some actions</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Managing Citations with <code>RefManageR</code></h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Makes it easy to print, search, update, import, combine references in <code>R</code></li>
+<li>Can read in <code>.bib</code> files and read <code>PDF</code>s using <code>Poppler</code> to create a citation</li>
+<li>Citations can also be searched for on <code>Crossref</code>, <code>Google Scholar</code>, <code>Pubmed</code>, and <code>Zotero</code></li>
+<li>Searching is very flexible, can search by arbitrary field plus key or entry type</li>
+<li>Citations can be generated for inclusion in <code>RMarkdown</code> and <code>RHTML</code> documents</li>
+<li>Bibliography of all cited references can be printed at end of document
+
+<ul>
+<li>hyperlinks automatically added, many bibliography and citation style available</li>
+</ul></li>
+<li>Supports <code>BibLaTeX</code> and <code>Bibtex</code> and converting <code>BibLaTeX</code> to <code>BibTeX</code> if forced</li>
+<li>Simple interface for setting default behaviour for the most used functions</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Printing example</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <pre><code class="r">library(RefManageR)
+bib &lt;- ReadBib(system.file(&quot;Bib&quot;, &quot;biblatexExamples.bib&quot;, package = &quot;RefManageR&quot;), check = FALSE)
+bib[[49:51]]
+</code></pre>
+
+<pre><code>## [1] B. Malinowski. _Argonauts of the Western Pacific. An account of native enterprise and
+## adventure in the Archipelagoes of Melanesian New Guinea_. 8th ed. London: Routledge and Kegan
+## Paul, 1972.
+## 
+## [2] M. Maron. _Animal Triste_. Trans. from the German by B. Goldstein. Lincoln: University of
+## Nebraska Press, 2000.
+## 
+## [3] W. Massa. _Crystal structure determination_. 2nd ed. Berlin: Spinger, 2004.
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>494 works of R.J. Carroll from Google Scholar</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <pre><code class="r">bib2 &lt;- ReadBib(system.file(&quot;Bib&quot;, &quot;RJC.bib&quot;, package = &quot;RefManageR&quot;))
+print(bib2[2:3], .opts = list(style = &quot;text&quot;, bib.style = &quot;alphabetic&quot;, sorting = &quot;none&quot;))
+</code></pre>
+
+<pre><code>## [Jen+13] E. M. Jennings, J. S. Morris, R. J. Carroll, et al. &quot;Bayesian methods for
+## expression-based integration of various types of genomics data&quot;. In: _EURASIP Journal on
+## Bioinformatics and Systems Biology_ 2013.1 (2013), pp. 1-11.
+## 
+## [Gar+13] T. P. Garcia, S. Müller, R. J. Carroll, et al. &quot;Identification of important
+## regressor groups, subgroups and individuals via regularization methods: application to
+## gut microbiome data&quot;. In: _Bioinformatics, btt_ 608 (2013).
+</code></pre>
+
+<ul>
+<li>Authors and other &quot;name list&quot; fields are stored in the <code>person</code> class</li>
+</ul>
+
+<pre><code class="r">bib2[1]$author
+</code></pre>
+
+<pre><code>## [1] &quot;N Serban&quot;    &quot;A M Staicu&quot;  &quot;R J Carroll&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Extract and Update fields</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Authors and other &quot;name list&quot; fields are stored in the <code>person</code> class</li>
+<li>Let&#39;s add url and urldate fields for Jennings et al and fix the journal for Garcia et al.</li>
+</ul>
+
+<pre><code class="r">bib2[2:3] &lt;- list(c(url=&quot;http://bsb.eurasipjournals.com/content/2013/1/13&quot;,
+                          urldate = &quot;2014-02-02&quot;), c(doi=&quot;10.1093/bioinformatics/btt608&quot;,
+                          journal = &quot;Bioinformatics&quot;))
+print(bib2[2:3], .opts = list(style = &quot;html&quot;, bib.style = &quot;authoryear&quot;))
+</code></pre>
+
+<p><cite>Garcia, T. P, S. Müller, R. J. Carroll, et al.
+(2013).
+&ldquo;Identification of important regressor groups, subgroups and individuals via regularization methods: application to gut microbiome data&rdquo;.
+In: <em>Bioinformatics</em> 608.
+DOI: <a href="http://dx.doi.org/10.1093/bioinformatics/btt608">10.1093/bioinformatics/btt608</a>.</cite></p>
+
+<p><cite>Jennings, E. M, J. S. Morris, R. J. Carroll, et al.
+(2013).
+&ldquo;Bayesian methods for expression-based integration of various types of genomics data&rdquo;.
+In: <em>EURASIP Journal on Bioinformatics and Systems Biology</em> 2013.1, pp. 1&ndash;11.
+URL: <a href="http://bsb.eurasipjournals.com/content/2013/1/13">http://bsb.eurasipjournals.com/content/2013/1/13</a> (visited on Feb. 02, 2014).</cite></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Searching with <code>SearchBib</code> and <code>[</code> Operator</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>How often is someone with family name &quot;Wang&quot; a coauthor?</li>
+</ul>
+
+<pre><code class="r">length(bib2[author = &quot;wang&quot;])
+</code></pre>
+
+<pre><code>## [1] 37
+</code></pre>
+
+<ul>
+<li>How often is N. Wang a coauthor?</li>
+</ul>
+
+<pre><code class="r">length(SearchBib(bib2, author = &quot;Wang, N.&quot;,
+                 .opts = list(match.author = &quot;family.with.initials&quot;)))
+</code></pre>
+
+<pre><code>## [1] 19
+</code></pre>
+
+<ul>
+<li>Use <code>names</code> to extract keys <code>bib$bibtype</code> to get entry types</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="codeChange" id="slide-32" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Searching with <code>SearchBib</code> and <code>[</code> Operator</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>How often did RJC and Ruppert collaborate after leaving UNC in July, 1987?</li>
+</ul>
+
+<pre><code class="r">length(SearchBib(bib2, author=&#39;ruppert&#39;, date=&quot;1987-07/&quot;,
+   .opts = list(match.date = &quot;exact&quot;)))
+</code></pre>
+
+<pre><code>## [1] 53
+</code></pre>
+
+<ul>
+<li>Carroll and Ruppert papers NOT in the 1990&#39;s</li>
+</ul>
+
+<pre><code class="r">length(SearchBib(bib2, author=&#39;ruppert&#39;, date = &quot;!1990/1999&quot;))
+</code></pre>
+
+<pre><code>## [1] 59
+</code></pre>
+
+<ul>
+<li>Can specify keys using e.g. <code>bib2[c(key1, key2)]</code> or <code>bib2[key1,key2]</code></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="smallerSpacing" id="slide-33" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Searching and Setting Options</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Carroll and Ruppert tech reports at UNC &quot;OR&quot; Carroll and Ruppert JASA papers</li>
+</ul>
+
+<pre><code class="r">length(bib2[list(author=&#39;ruppert&#39;, bibtype=&quot;report&quot;, institution=&quot;north carolina&quot;),
+  list(author=&quot;ruppert&quot;,journal=&quot;journal of the american statistical association&quot;)])
+</code></pre>
+
+<pre><code>## [1] 22
+</code></pre>
+
+<ul>
+<li>Interface for options similar to <code>options</code> function</li>
+</ul>
+
+<pre><code class="r">old.opts &lt;- BibOptions(bib.style = &quot;authoryear&quot;, match.author = &quot;exact&quot;, ignore.case = FALSE,
+                       first.inits = FALSE, style = &quot;html&quot;)
+bib[author = &quot;Baez, John C.&quot;]
+</code></pre>
+
+<p><cite>Baez, John C. and Aaron D. Lauda
+(2004a).
+&ldquo;Higher-Dimensional Algebra V: 2-Groups&rdquo;.
+Version 3.
+In: <em>Theory and Applications of Categories</em> 12, pp. 423-491.
+arXiv: <a href="http://arxiv.org/abs/math/0307200v3">math/0307200v3</a>.</cite></p>
+
+<p><cite>&mdash;
+(2004b).
+<em>Higher-Dimensional Algebra V: 2-Groups</em>.
+arXiv: <a href="http://arxiv.org/abs/math/0307200v3">math/0307200v3</a>.</cite></p>
+
+<pre><code class="r">BibOptions(old.opts) # restore defaults
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Citations for <code>RMarkdown</code> and <code>RHTML</code> Docs</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Cite functions for citations, convenience functions <code>Citet</code>, <code>AutoCite</code>, <code>TextCite</code>, <code>Citep</code>
+
+<ul>
+<li>Specify <code>style</code> as <code>&quot;html&quot;</code> or <code>&quot;markdown&quot;</code> for <code>HTML</code> and <code>Markdown</code> documents</li>
+<li>Hyperlinks will be included automatically, and may be turned off if desired</li>
+<li>The code in unevaluated, chunk form is as follows</li>
+</ul></li>
+</ul>
+
+<pre><code class="r">BibOptions(check.entries = FALSE, style = &quot;html&quot;)
+Citep(bib, author = &quot;Itzhaki&quot;, .opts = list(cite.style = &quot;alphabetic&quot;))
+TextCite(bib, c(&quot;loh&quot;, &quot;wilde&quot;), .opts = list(cite.style = &quot;authoryear&quot;, hyperlink = &quot;#35&quot;))
+</code></pre>
+
+<ul>
+<li>Inline (wrapped in <code>I()</code>): Here is one citation <a id='cite-itzhaki'></a>[<a href='http://arxiv.org/abs/hep-th/9603067'>Itz96</a>], two more are <a id='cite-loh'></a><a id='cite-wilde'></a><a href='#36'>Loh (1992)</a>; <a href='#36'>Wilde (1899)</a></li>
+<li><code>Itz96</code> goes to the <code>arXiv</code> doc, the other two references go to the bibliography slide</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="bibSlide" style="background:;">
+  <hgroup>
+    <table class = "navTable">
+     <tr>
+       <td class = "navLeft">
+         <h2><h2>Printing the bibliography</h2></h2>
+       </td>
+       <td class = "navRight">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+         <button class="navButton" onclick="window.slidedeck.nextSlide()">&#8594;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <p>Now we print the bibliography, using <code>results=&#39;asis&#39;</code> in the <code>knitr</code> chunk</p>
+
+<pre><code class="r">PrintBibliography(bib, .opts = list(bib.style = &quot;numeric&quot;))
+</code></pre>
+
+<p><a id='bib-itzhaki'></a><a href="#cite-itzhaki">[1]</a><cite>
+N. Itzhaki.
+<em>Some remarks on 't Hooft's S-matrix for black holes</em>.
+Mar. 11, 1996.
+arXiv: <a href="http://arxiv.org/abs/hep-th/9603067">hep-th/9603067</a>.</cite></p>
+
+<p><a id='bib-loh'></a><a href="#cite-loh">[2]</a><cite>
+N. C. Loh.
+&ldquo;High-Resolution Micromachined Interferometric Accelerometer&rdquo;.
+MA Thesis.
+Cambridge, Mass.: Massachusetts Institute of Technology, 1992.</cite></p>
+
+<p><a id='bib-wilde'></a><a href="#cite-wilde">[3]</a><cite>
+O. Wilde.
+<em>The Importance of Being Earnest: A Trivial Comedy for Serious
+People</em>.
+English and American drama of the Nineteenth Century.
+Leonard Smithers and Company, 1899.
+Google Books: googlebooks.</cite></p>
+
+<ul>
+<li>On a single webpage, the hyperlinks in e.g. <code>[1]</code>, will go to the point of first citation
+
+<ul>
+<li>Getting this working automatically for <code>HTML5</code> slides is not implemented yet</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-36" style="background:;">
+  <hgroup>
+    <table style="width: 100%; background-color: white">
+     <tr>
+       <td style="width: 90%; background-color: white">
+         <h2><h2>Learning More</h2></h2>
+       </td>
+       <td style="width: 10%; background-color: white">
+         <button class="navButton" onclick="window.slidedeck.prevSlide()">&#8592;</button>
+       </td>
+     </tr>
+   </table>
+ </hgroup>
+  <article data-timings="">
+    <ul>
+<li>See the <a href="http://cran.r-project.org/web/views/ReproducibleResearch.html">CRAN task view</a> on reproducible research for other <code>R</code> packages on this topic</li>
+<li><a href="http://www.r-bloggers.com/brief-introduction-on-sweave-and-knitr-for-reproducible-research/?utm_source=twitterfeed&amp;utm_medium=twitter&amp;utm_campaign=Feed%3A+RBloggers+%28R+bloggers%29">These slides</a> for more on the basics of of <code>Sweave</code> and <code>knitr</code> and also Yihui Xie&#39;s <a href="http://yihui.name/knitr/">website</a></li>
+<li>CRC Press has a <a href="http://www.crcpress.com/browse/series/crctherser">several titles</a> in the works and already available on the subject
+
+<ul>
+<li><a href="http://www.crcpress.com/product/isbn/9781482203530">Dynamic Documents with R and knitr</a> and <a href="http://www.crcpress.com/product/isbn/9781466572843">Reproducible Research in R and RStudio</a></li>
+</ul></li>
+<li>For <code>RStudio</code>, see all the links for various features back on <a href="http://www.stat.tamu.edu/%7Emmclean/iamcs2/#4">Slide 4</a></li>
+<li>Ramnath Vaidyanathan&#39;s <a href="http://www.youtube.com/user/ramnathv1/videos?flow=grid&amp;view=0">Youtube channel</a> for some neat demos of his packages
+
+<ul>
+<li><code>Slidify</code>, <code>rNotebook</code>, <code>rCharts</code>, <code>rMaps</code>, etc. (all on <a href="https://github.com/ramnathv">Github</a>)</li>
+</ul></li>
+<li>The <a href="http://rstudio.github.io/shiny/tutorial/">Shiny tutorial</a> so nice, I&#39;m linking to it twice</li>
+<li>For <code>Git</code> see <a href="http://git-scm.com/docs">here</a>, <a href="https://www.atlassian.com/git/">here</a>, <a href="http://gitref.org">here</a>, and Pro Git <a href="https://github.s3.amazonaws.com/media/progit.en.pdf">(pdf here)</a></li>
+<li><a href="http://johnmacfarlane.net/pandoc/"><code>Pandoc</code></a> - the &quot;Swiss Army knife&quot; for converting between markup languages</li>
+<li>The <code>RefManager</code> package is <a href="http://cran.r-project.org/web/packages/RefManageR/index.html">available on CRAN</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Why Should You Care?'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Why Should You Care?'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Why Should You Care?'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Why Should You Care?'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Markup Languages'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='<a href="http://www.rstudio.com/ide/docs/authoring/using_markdown"><code>R Markdown</code></a>'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Getting Started in <code>RStudio</code>'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Example'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Output'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='From <code>Markdown</code> to <code>LaTeX</code>'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Useful Chunk Options in <code>knitr</code>'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Example: Automatic Generation of a Quiz'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Example: Automatic Generation of a Quiz'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Example: Automatic Generation of a Quiz'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Example: Automatic Generation of a Quiz'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Example: Automatic Generation of a Quiz'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Creating <code>HTML5</code> Presentations In <code>R</code>'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Example: Interactive Graphics from <a href="http://www.highcharts.com/">Highcharts</a>'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='More Canadian Weather Data - <code>googleVis</code>'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='3D plots with <a href="http://cran.r-project.org/web/packages/rgl/index.html"><code>RGL</code></a> and <code>WebGL</code>'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='<code>Shiny</code>'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Example: Functional Regression Modelling'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Version Control Systems (VCS)'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Why Use Git/GitHub (Even to Work Alone)?'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='<code>GitHub</code>'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='A Sampling of Git Commands and Terminology'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Managing Citations with <code>RefManageR</code>'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Printing example'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='494 works of R.J. Carroll from Google Scholar'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Extract and Update fields'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Searching with <code>SearchBib</code> and <code>[</code> Operator'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Searching with <code>SearchBib</code> and <code>[</code> Operator'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Searching and Setting Options'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Citations for <code>RMarkdown</code> and <code>RHTML</code> Docs'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Printing the bibliography'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Learning More'>
+         36
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="./assets/js/titleclicks.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

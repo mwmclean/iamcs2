@@ -1,0 +1,133 @@
+#titleButton{
+  position: absolute;
+  top: 300px;
+  left: 1050px;
+  color: red;
+  display: block;
+}
+
+.navRight{
+  width: 10%;
+  background-color: white;
+}
+
+.navTable{
+  background-color: white;
+  width: 100%;
+}
+
+.navLeft{
+  width: 90%;
+  background-color: white;
+}
+
+.navButton{
+  font-size: 15px;
+  font-weight: 900;
+}
+a code{
+color: blue;
+}
+
+slide.smallerSpacing ul, slide.smallerSpacing li, slide.smallerSpacing ol {
+    padding: 0em;
+    margin-bottom: 0.1em !important;
+}
+
+slide.mediumSpacing ul, slide.mediumSpacing li, slide.mediumSpacing ol {
+    padding: 0em;
+    margin-bottom: 0.4em !important;
+}
+
+slide.mediumSpacing p {
+    margin-bottom: 0.5em !important;
+}
+
+slide.smallerSpacing p {
+    margin-bottom: 0.5em !important;
+}
+
+slide.largerSpacing ul, slide.largerSpacing li, slide.largerSpacing ol {
+    padding: 0em;
+    margin-bottom: 0.7em !important;
+}
+
+slide.no-highlight code, slide.no-highlight span {
+  color: black;
+}
+
+slide.body-slide h3{
+  color: red;
+}
+
+slide em {
+  font-style: italic;
+}
+
+slide.codeChange{
+  font-family: Courier;
+}
+
+slide strong {
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-weight: 900;
+}
+
+slide.title-slide p{
+  float: left;
+}
+
+iframe{
+  overflow: scroll;
+  max-height: 560px;
+  max-width: 964px;
+  backgroundColor: 'rgba(255, 255, 255, 0.1)';
+  border: 0px solid #CCC;
+}
+
+iframe #rgl{
+  overflow: hide;
+  height: 500px;
+}
+
+slide.img-slide iframe{
+  max-height: 560px;
+  max-width: 964px;
+  overflow: hide;
+}
+
+#UniLogo img{
+  width: 15%;
+  height: 15%;
+}
+
+#UniLogo {
+  padding: 50px;
+  margin-left: 10%;
+}
+
+/*
+
+.titleImg {
+  position:relative;
+}
+
+#UniLogo{
+  top: 100px;
+}
+
+#DepLogo{
+  float:right;
+  right: 65px;
+  top: 10px;
+}
+
+#DepLogo {
+  width: "70%";
+  height: "70%";
+}
+*/
+
+.title-slide {
+  background-color: #BDA0CB;
+}
