@@ -623,7 +623,7 @@ Citep(bib, author = "Itzhaki", .opts = list(cite.style = "alphabetic"))
 TextCite(bib, c("loh", "wilde"), .opts = list(cite.style = "authoryear", hyperlink = "#35"))
 ```
 
-* Inline (wrapped in `I()`): Here is one citation <a id='cite-itzhaki'></a>[<a href='http://arxiv.org/abs/hep-th/9603067'>Itz96</a>], two more are <a id='cite-loh'></a><a id='cite-wilde'></a><a href='#36'>Loh (1992)</a>; <a href='#36'>Wilde (1899)</a>
+* Inline (wrapped in `I()`): Here is one citation [<a href='http://arxiv.org/abs/hep-th/9603067'>Itz96</a>], two more are <a href='#36'>Loh (1992)</a>; <a href='#36'>Wilde (1899)</a>
 * `Itz96` goes to the `arXiv` doc, the other two references go to the bibliography slide
 
 --- #bibSlide
